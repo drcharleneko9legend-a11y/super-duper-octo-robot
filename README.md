@@ -1,16 +1,64 @@
-# React + Vite
+# Warrior Vitality Landing Page
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+High-conversion landing page for Warrior Vitality, built with Vite, React, and Tailwind CSS.
 
-Currently, two official plugins are available:
+## Features
+- High-intensity, 'scroll-stopping' design.
+- Mobile-first responsive layout.
+- Warrior Signup email capture.
+- Integrated with team database for lead storage.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Tech Stack
+- **Frontend:** Vite, React, Tailwind CSS, Lucide React.
+- **Backend:** Node.js, Express.
+- **Database:** SQLite (via `team-db` CLI).
 
-## React Compiler
+## Local Setup
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+### Prerequisites
+- Node.js (v24 or later)
+- `team-db` CLI installed and configured.
 
-## Expanding the ESLint configuration
+### Installation
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/drcharleneko9legend-a11y/super-duper-octo-robot.git
+   cd super-duper-octo-robot
+   ```
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+3. Start development server:
+   ```bash
+   npm run dev
+   ```
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Deployment
+
+### Using Docker
+1. Build and start the container:
+   ```bash
+   docker-compose up -d --build
+   ```
+The app will be available at `http://localhost:3000`.
+
+### Manual Deployment
+1. Build the frontend:
+   ```bash
+   npm run build
+   ```
+2. Start the production server:
+   ```bash
+   node server.js
+   ```
+
+## Database Schema
+The app uses a `leads` table in the shared database:
+```sql
+CREATE TABLE IF NOT EXISTS leads (
+  id INTEGER PRIMARY KEY AUTOINCREMENT, 
+  email TEXT UNIQUE NOT NULL, 
+  created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+);
+```
